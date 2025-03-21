@@ -20,6 +20,21 @@
   * 
   * Q7 20 string objects are created by the following declaration
   * 
+  * Q9 It dose not work <= bcz we have hours from 0 to 23 and when we put the sign
+  * <= it makes it to go to 24 from 0 and theres no space so there is an error
+  * count 0 to 24 its 25.
+  * 
+  * 
+  * 
+  * public void printGreater(double marks, double mean) { 
+for(index = 0; index <= marks.length; index++) {
+if(marks[index] > mean) {
+System.out.println(marks[index]);
+} 
+} 
+}  * 
+  * 
+  * 
   * 
   * 
     */
@@ -45,16 +60,19 @@ public class LogAnalyzer
     //Q8
     double[] prices;
     //TicketMachine[] machines;
+    
     /**
      * Create an object to analyze hourly web accesses.
      */
-    public LogAnalyzer()
+    //Q12
+    public LogAnalyzer(String logfilename)
     { 
         // Create the array object to hold the hourly
         // access counts.
         hourCounts = new int[24];
         // Create the reader to obtain the data.
-        reader = new LogfileReader();
+        //Q12
+        reader = new LogfileReader(logfilename);
         //Q5
         occupied = new boolean[5000];
         //Q6
@@ -66,6 +84,7 @@ public class LogAnalyzer
         //Q8
         prices = new double[50];
     }
+
 
     /**
      * Analyze the hourly access data from the log file.
@@ -87,8 +106,15 @@ public class LogAnalyzer
     public void printHourlyCounts()
     {
         System.out.println("Hr: Count");
-        for(int hour = 0; hour < hourCounts.length; hour++) {
+        //for(int hour = 0; hour < hourCounts.length; hour++) {
+            //System.out.println(hour + ": " + hourCounts[hour]);
+        //}
+        //Q10
+        int hour= 0;
+        while ( hour < hourCounts.length)
+        {
             System.out.println(hour + ": " + hourCounts[hour]);
+            hour++;
         }
     }
     
@@ -98,5 +124,18 @@ public class LogAnalyzer
     public void printData()
     {
         reader.printData();
+        //Q11
+        double[] marks = {2.3,3.3,5.8,1.0,0.8};
+        printGreater(marks,2.0);
+    }
+    
+    //Q11
+    public void printGreater(double[] marks, double mean) { 
+       for(int index = 0; index < marks.length; index++) {
+         if(marks[index] > mean) {
+           System.out.println(marks[index]);
+         } 
+       } 
     }
 }
+
