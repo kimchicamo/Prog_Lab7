@@ -1,3 +1,4 @@
+
 /**
  * Read web server data and analyse hourly access patterns.
  * 
@@ -10,6 +11,8 @@ public class LogAnalyzer
     private int[] hourCounts;
     // Use a LogfileReader to access the data.
     private LogfileReader reader;
+    //private Person[] people; 
+    private boolean[] vacant;
 
     /**
      * Create an object to analyze hourly web accesses.
