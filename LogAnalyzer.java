@@ -137,5 +137,53 @@ public class LogAnalyzer
          } 
        } 
     }
+    //Q13,14
+    public int numberOfAccesses() { 
+      int total = 0;
+      for (int count = 0; count < hourCounts.length; count++) {
+       total += hourCounts[count]; 
+      }
+      return total; 
+    } 
+    //Q15,USED FOR EACH LOOP,Compared each hour’s count with the current maximum
+    public int busiestHour() {
+        int maxHour = 0;
+        for (int count = 1; count < hourCounts.length; count++) {
+            if (hourCounts[count] > hourCounts[maxHour]) {
+                maxHour = count;
+            }
+        }
+        return maxHour;
+    }
+    //Q16 
+    public int quietestHour(){
+        int minHour=0; 
+        int minCount = hourCounts[0]; 
+        for (int count = 1; count < hourCounts.length; count++) {
+        if (hourCounts[count] < minCount) {
+            minCount = hourCounts[count];
+            minHour = count;
+        }
+        }
+        return minHour;
+    }
+    //Q18
+    /** 
+    * Find the busiest two-hour period. Return the first hour of this period.
+    */
+     public int busiestTwoHourPeriod() {
+        int maxHour = 0;
+        int maxCount = hourCounts[0] + hourCounts[1];
+
+        for (int i = 1; i < hourCounts.length - 1; i++) {
+        int twoHourSum = hourCounts[i] + hourCounts[i + 1];
+
+        if (twoHourSum > maxCount) {
+            maxCount = twoHourSum;
+            maxHour = i;
+        }
+        }
+        return maxHour;
+    }
 }
 
